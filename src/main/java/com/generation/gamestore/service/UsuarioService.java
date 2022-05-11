@@ -24,7 +24,7 @@ public class UsuarioService {
 	public Optional<Usuario> cadastraUsuario(Usuario usuario) {
 		
 		//valida se o usuário já existe no banco
-		if (repository.findByUsuario(usuario.getEmailUsuario()).isPresent())
+		if (repository.findByEmailUsuario(usuario.getEmailUsuario()).isPresent())
 		return Optional.empty();
 
 		//criptografo a senha do usuário
@@ -43,7 +43,7 @@ public class UsuarioService {
 	};
 	
 	public Optional<UsuarioLogin> autenticaUsuario(Optional<UsuarioLogin> usuarioLogin){
-		Optional<Usuario> usuario = repository.findByUsuario(usuarioLogin.get().getEmailUsuario());
+		Optional<Usuario> usuario = repository.findByEmailUsuario(usuarioLogin.get().getEmailUsuario());
 		
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
@@ -75,7 +75,7 @@ public class UsuarioService {
 	
 	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
 		if (repository.findById(usuario.getId()).isPresent()) {
-			Optional<Usuario> buscarUsuario = repository.findByUsuario(usuario.getEmailUsuario());
+			Optional<Usuario> buscarUsuario = repository.findByEmailUsuario(usuario.getEmailUsuario());
 			if (buscarUsuario.isPresent()) {
 				if (buscarUsuario.get().getId() != usuario.getId())
 
