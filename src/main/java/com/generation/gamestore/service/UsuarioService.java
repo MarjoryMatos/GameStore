@@ -33,14 +33,14 @@ public class UsuarioService {
 		//usuário com a senha já criptografada
 		return Optional.of(repository.save(usuario)); 
 				
-	};
+	}
 	
 	//função para criptografar a senha digitada pelo usuário
 	private String criptografarSenha(String senha) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();		
 		return encoder.encode(senha);
 
-	};
+	}
 	
 	public Optional<UsuarioLogin> autenticaUsuario(Optional<UsuarioLogin> usuarioLogin){
 		Optional<Usuario> usuario = repository.findByEmailUsuario(usuarioLogin.get().getEmailUsuario());

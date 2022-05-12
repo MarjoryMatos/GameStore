@@ -22,6 +22,10 @@ private static final long serialVersionUID = 1L;
 		this.password = usuario.getSenha();
 	}
 	
+	public UserDetailsImpl() {
+	}
+
+	
 	@Override
 	public String getPassword() {
 		return password;
