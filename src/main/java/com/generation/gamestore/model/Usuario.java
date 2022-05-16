@@ -44,6 +44,19 @@ public class Usuario {
 	
 	
 
+	public Usuario(Long id, String nome, String emailUsuario, String senha, String foto) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.emailUsuario = emailUsuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+	
+	public Usuario() {
+		
+	}
+
 	public String getFoto() {
 		return foto;
 	}

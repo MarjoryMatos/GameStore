@@ -35,6 +35,16 @@ public class UsuarioService {
 				
 	}
 	
+	public Optional<Usuario> CadastrarUsuario(Usuario usuario) {
+
+		if (repository.findByEmailUsuario(usuario.getEmailUsuario()).isPresent()) {
+			return Optional.empty();
+		}
+
+		usuario.setSenha(criptografarSenha(usuario.getSenha()));
+
+		return Optional.of(repository.save(usuario));
+	}
 	//função para criptografar a senha digitada pelo usuário
 	private String criptografarSenha(String senha) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();		
